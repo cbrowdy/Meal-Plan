@@ -47,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func fetchDataForRecipesCollectionView(keyword: String) {
         let recipeURL = URL(string:
-                                "https://api.spoonacular.com/recipes/complexSearch?apiKey=d713c1e77ea84be39804e88d3307595a&query=\(keyword.replacingOccurrences(of: " ", with: "+") )")
+                                "https://api.spoonacular.com/recipes/complexSearch?apiKey=804dbeff69ea4e25a1051ae9714d9e63&query=\(keyword.replacingOccurrences(of: " ", with: "+") )")
         let binaryAPIResultsData = try! Data(contentsOf: recipeURL!)
         currentAPIResultsData = try! JSONDecoder().decode(APIResults.self, from: binaryAPIResultsData)
         currentRecipesData = currentAPIResultsData!.results
@@ -89,29 +89,57 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+//        let recipeImageSubView = UIImageView(frame: cell.bounds)
+//        recipeImageSubView.image = theImageCache[indexPath.item]
+//        let recipeTitleSubView = UILabel(frame: CGRect(x: 0, y: 0.75*cell.bounds.height, width: cell.bounds.width, height: 0.25*cell.bounds.height))
+//        recipeTitleSubView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        recipeTitleSubView.text = currentRecipesData[indexPath.item].title
+//        recipeTitleSubView.textColor = UIColor.white
+//        recipeTitleSubView.textAlignment = .center
+//        cell.addSubview(recipeImageSubView)
+//        cell.addSubview(recipeTitleSubView)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let recipeImageSubView = UIImageView(frame: cell.bounds)
+        for subview in cell.subviews{
+            subview.removeFromSuperview()
+        }
+        //adding the image to the cell
+        let imageFrame = CGRect(x: 0, y: 30, width: 312, height: 231)
+        let recipeImageSubView = UIImageView(frame: imageFrame)
         recipeImageSubView.image = theImageCache[indexPath.item]
-        let recipeTitleSubView = UILabel(frame: CGRect(x: 0, y: 0.75*cell.bounds.height, width: cell.bounds.width, height: 0.25*cell.bounds.height))
-        recipeTitleSubView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        recipeImageSubView.layer.cornerRadius = 10
+        recipeImageSubView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        recipeImageSubView.clipsToBounds = true
+        cell.addSubview(recipeImageSubView)
+        //adding the title to the cell
+        let recipeTitleSubView = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.width, height: 30))
+        recipeTitleSubView.backgroundColor = UIColor.brown.withAlphaComponent(0.5)
         recipeTitleSubView.text = currentRecipesData[indexPath.item].title
         recipeTitleSubView.textColor = UIColor.white
         recipeTitleSubView.textAlignment = .center
-        cell.addSubview(recipeImageSubView)
+        recipeTitleSubView.layer.cornerRadius = 10
+        recipeTitleSubView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        recipeTitleSubView.clipsToBounds = true
         cell.addSubview(recipeTitleSubView)
+        //adding cuisine to the cell
+        let cuisineSubView = UILabel(frame: CGRect(x: 0, y: 280, width: 80, height: 20))
+        cuisineSubView.backgroundColor=UIColor.brown.withAlphaComponent(0.5)
+        cuisineSubView.text = " italian "
+        cuisineSubView.textColor = UIColor.white
+        cuisineSubView.font = UIFont.italicSystemFont(ofSize: 16)
+        recipeImageSubView.layer.cornerRadius = 10
+        recipeImageSubView.clipsToBounds = true
+        cuisineSubView.sizeToFit()
+        cell.addSubview(cuisineSubView)
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-//        let detailedVC = DetailedViewController()
-//        detailedVC.movieTitle = theMoviesData[indexPath.item].title
-//        detailedVC.movieID = theMoviesData[indexPath.item].id
-//        detailedVC.moviePoster = theImageCache[indexPath.item]
-//        detailedVC.movieReleaseDate = theMoviesData[indexPath.item].release_date
-//        detailedVC.movieScore = Int((theMoviesData[indexPath.item].vote_average)*10)
-//        detailedVC.movieVotes = theMoviesData[indexPath.item].vote_count
-//        detailedVC.movieVideosPath = "https://api.themoviedb.org/3/movie/\(String(detailedVC.movieID))/videos?api_key=5cb01c4bba49dc70fa2abfa650c3d31f&language=en-US"
-//        navigationController?.pushViewController(detailedVC, animated: true)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        let detailedRecipeVC = DetailedRecipeViewController()
+        detailedRecipeVC.recipeID = currentRecipesData[indexPath.item].id
+        detailedRecipeVC.recipeTitle = currentRecipesData[indexPath.item].title
+        detailedRecipeVC.recipeImage = theImageCache[indexPath.item]
+        navigationController?.pushViewController(detailedRecipeVC, animated: true)
+    }
 }
 
