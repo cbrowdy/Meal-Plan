@@ -101,7 +101,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=804dbeff69ea4e25a1051ae9714d9e63")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
         ingredientsAPIResultsData = try! JSONDecoder().decode(ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
@@ -109,7 +109,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForInstructionsTableView() {
         let instructionsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=804dbeff69ea4e25a1051ae9714d9e63")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
         let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
         instructionsAPIResultsData = try! JSONDecoder().decode([instructionsAPIResults].self, from: binaryAPIResultsData)
         print(instructionsAPIResultsData!)
@@ -120,8 +120,13 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     func setupTableViews(){
         ingredientsTableView.dataSource = self
         ingredientsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ingredientCell")
+//        ingredientsTableView.estimatedRowHeight = 85.0
+//        ingredientsTableView.rowHeight = UITableView.automaticDimension
+        
         instructionsTableView.dataSource = self
         instructionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "instructionCell")
+        instructionsTableView.estimatedRowHeight = 150.0
+        instructionsTableView.rowHeight = UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,11 +143,14 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         if tableView == self.ingredientsTableView {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "ingredientCell")
             cell.textLabel!.text = ingredientsData[indexPath.row].name!
+//            cell.textLabel!.lineBreakMode = .byWordWrapping
+//            cell.textLabel!.numberOfLines = 0
             return cell
         }
         else if tableView == self.instructionsTableView {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "instructionCell")
             cell.textLabel!.text = instructionsData[indexPath.row].step ?? ""
+            cell.textLabel!.numberOfLines = 0
             return cell
         }
         return UITableViewCell()
@@ -153,6 +161,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         self.ingredientsTableViewHeightConstraints?.constant = self.ingredientsTableView.contentSize.height
         self.instructionsTableViewHeightConstraints?.constant = self.instructionsTableView.contentSize.height
     }
+
 
 
     /*
