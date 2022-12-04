@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yl5-Je-bCb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BrA-mx-cXu">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -14,19 +14,23 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Final_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-hj-hbU">
-                                <rect key="frame" x="-1" y="47" width="391" height="44"/>
+                                <rect key="frame" x="1" y="81" width="391" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ous-jX-uKK"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-zE-z9d">
+                                <rect key="frame" x="191" y="146" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ghs-eM-p1G">
-                                <rect key="frame" x="15" y="169" width="359" height="579"/>
+                                <rect key="frame" x="15" y="198" width="359" height="563"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91587452670000002" green="1" blue="0.87775988329999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cWV-72-VxQ">
@@ -46,10 +50,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-zE-z9d">
-                                <rect key="frame" x="191" y="116" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.91587452670000002" green="1" blue="0.87775988329999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="6584.6153846153848" y="1352.8436018957345"/>
         </scene>
         <!--Security-->
         <scene sceneID="KuQ-ea-rvv">
@@ -108,7 +108,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="magnifyingglass" catalog="system" id="wFf-I8-VXj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SCh-Ep-GJM">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -118,13 +118,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inh-M1-BzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030.7692307692307" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="5658" y="1353"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qqi-Mg-rXT">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Yl5-Je-bCb" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qxu-BW-Nue"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8H0-Mw-Goz">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -132,12 +133,11 @@
                     </tabBar>
                     <connections>
                         <segue destination="20m-Zv-jT4" kind="relationship" relationship="viewControllers" id="azo-Ec-gog"/>
-                        <segue destination="BrA-mx-cXu" kind="relationship" relationship="viewControllers" id="XfO-YF-3i5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyD-h1-lrX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.53846153846153" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="4729" y="1353"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="OhR-Gs-9pY">
@@ -176,12 +176,12 @@
                     <connections>
                         <outlet property="emailtextfield" destination="sCk-4w-aIC" id="PJO-on-bjc"/>
                         <outlet property="passwordtextfield" destination="0S9-QF-aCB" id="xNO-JQ-wnq"/>
-                        <segue destination="Oh7-lI-R8G" kind="show" identifier="goToNext" id="NFe-zH-5iW"/>
+                        <segue destination="Yl5-Je-bCb" kind="presentation" identifier="goToNext" id="MbB-lJ-Efo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CqO-xS-HAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553.8461538461538" y="829.62085308056874"/>
+            <point key="canvasLocation" x="2755" y="578"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="vyp-8O-lmy">
@@ -220,37 +220,12 @@
                     <connections>
                         <outlet property="emailtextfield" destination="RxM-Rc-DGL" id="nmf-Ot-ppB"/>
                         <outlet property="passwordtextfield" destination="oUH-ff-mQj" id="6ok-2v-2Ji"/>
-                        <segue destination="Oh7-lI-R8G" kind="show" identifier="goToNext" id="vFg-cI-vzE"/>
+                        <segue destination="Yl5-Je-bCb" kind="presentation" identifier="goToNext" id="I9s-X3-36a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-Ms-CjM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2553.8461538461538" y="1660.6635071090047"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Osl-AF-BaU">
-            <objects>
-                <viewController id="Oh7-lI-R8G" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="idN-2H-xoo">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login Sucess!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLs-i4-eS2">
-                                <rect key="frame" x="138" y="265" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Fk7-Tm-X2x"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="H9m-K7-CEe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EOK-AR-3gv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3653.8461538461538" y="1352.8436018957345"/>
         </scene>
         <!--Item-->
         <scene sceneID="WNi-YN-KG7">
@@ -273,7 +248,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vFg-cI-vzE"/>
+        <segue reference="MbB-lJ-Efo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
