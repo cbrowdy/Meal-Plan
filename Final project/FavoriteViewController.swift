@@ -26,9 +26,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITabBarC
                     guard let value = snapshot.value as? [String: Any] else {return}
                     guard let userName = value["User"] as? String else {return}
                     guard let fID = value["ID"] as? Int else {return}
+                    self.foodID = fID
                     if(userName == Auth.auth().currentUser!.uid) {
                         //print(value)
-                        self.foodID = fID
+                        
                         self.recipes.insert(self.foodID)
                         //print(String(self.foodID))
                     }
