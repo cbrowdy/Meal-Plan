@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate{
     
-    let apiKey = "fc2e4c47c6de44e5a4c045a5dff8e5ce"
+    let apiKey = "d3df034367764d7b8666cb5b8c04ed3e"
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var recipesCollectionView: UICollectionView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!

@@ -11,13 +11,39 @@ import FirebaseDatabase
 
 class FavoriteViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        private let ref = Database.database().reference(fromURL: "https://mealplan-327cb-default-rtdb.firebase.com/")
+        
+        @IBOutlet weak var favoritesTableView: UITableView!
+        
+        var foodID : Int!
+        var recipes: Set<Int?> = []
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            for i in 1...1000 {
+                ref.child(String(i)).observeSingleEvent(of: .value, with: { snapshot in
+                    guard let value = snapshot.value as? [String: Any] else {return}
+                    guard let userName = value["User"] as? String else {return}
+                    guard let fID = value["ID"] as? Int else {return}
+                    if(userName == Auth.auth().currentUser!.uid) {
+                        //print(value)
+                        self.foodID = fID
+                        self.recipes.insert(self.foodID)
+                        //print(String(self.foodID))
+                    }
+                })
+                
+            }
+            
+            
+        }
+    
+    
+    @IBAction func refreshFav(_ sender: UIButton) {
+        for j in self.recipes{
+            print(j!)
+        }
     }
     
-
     /*
     // MARK: - Navigation
 

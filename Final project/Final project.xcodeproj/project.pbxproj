@@ -19,6 +19,7 @@
 		A8BC1993293C7D5300053912 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC1992293C7D5300053912 /* LoginViewController.swift */; };
 		A8BC1995293C7F3100053912 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC1994293C7F3100053912 /* SignupViewController.swift */; };
 		A8BC1997293C83D900053912 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8BC1996293C83D900053912 /* GoogleService-Info.plist */; };
+		DCABC61F293DF1CF00C5EF85 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABC61E293DF1CF00C5EF85 /* FavoriteViewController.swift */; };
 		DCD56F77293DE6D70059B72F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DCD56F76293DE6D70059B72F /* FirebaseAuth */; };
 		DCD56F79293DE6D70059B72F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DCD56F78293DE6D70059B72F /* FirebaseDatabase */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		A8BC1992293C7D5300053912 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A8BC1994293C7F3100053912 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A8BC1996293C83D900053912 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DCABC61E293DF1CF00C5EF85 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteViewController.swift; path = ../FavoriteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				63847315293D4CA300FFD6C9 /* HomeViewController.swift */,
 				A8BC1994293C7F3100053912 /* SignupViewController.swift */,
 				A8BC1992293C7D5300053912 /* LoginViewController.swift */,
+				DCABC61E293DF1CF00C5EF85 /* FavoriteViewController.swift */,
 				63A7A6572921A3EB004CECB7 /* Assets.xcassets */,
 				63A7A6592921A3EB004CECB7 /* LaunchScreen.storyboard */,
 				63A7A65C2921A3EB004CECB7 /* Info.plist */,
@@ -175,6 +178,7 @@
 				63A7A64F2921A3EB004CECB7 /* AppDelegate.swift in Sources */,
 				A8BC1993293C7D5300053912 /* LoginViewController.swift in Sources */,
 				63847317293D4CA300FFD6C9 /* HomeViewController.swift in Sources */,
+				DCABC61F293DF1CF00C5EF85 /* FavoriteViewController.swift in Sources */,
 				63A7A6512921A3EB004CECB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
