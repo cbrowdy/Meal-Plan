@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDataSource {
     
 //    var recipeID: Int! = 133212
-    
+    var apiKey = "d9b36e447e1a488a8c53a19d4168b2b6"
     var recipeData:Dictionary<String,Any>!
     var recipeID: Int!
     var recipeTitle: String!
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func GenerateRandomRecipe(){
-        let randomRecipeURL = URL(string: "https://api.spoonacular.com/recipes/random?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47&number=1&includeNutrition=false")
+        let randomRecipeURL = URL(string: "https://api.spoonacular.com/recipes/random?apiKey=\(apiKey)&number=1&includeNutrition=false")
         let binaryRandomRecipeResults = try! Data(contentsOf: randomRecipeURL!)
         if let randomRecipeResults = try! JSONSerialization.jsonObject(with: binaryRandomRecipeResults, options: .fragmentsAllowed) as? [String:Any]{
             recipeData = (((randomRecipeResults["recipes"] as! NSArray)[0]) as! Dictionary<String,Any>)
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=\(apiKey)")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
         ingredientsAPIResultsData = try! JSONDecoder().decode(DetailedRecipeViewController.ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForInstructionsTableView() {
         let instructionsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=\(apiKey)")
         let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
         instructionsAPIResultsData = try! JSONDecoder().decode([DetailedRecipeViewController.instructionsAPIResults].self, from: binaryAPIResultsData)
         print(instructionsAPIResultsData!)

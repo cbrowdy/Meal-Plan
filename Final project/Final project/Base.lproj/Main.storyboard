@@ -148,20 +148,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snM-rx-Lgt">
-                                <rect key="frame" x="331" y="20" width="43" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
-                                <connections>
-                                    <action selector="refreshFav:" destination="gAX-5A-qiO" eventType="touchUpInside" id="2ja-rY-OiI"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tii-FZ-YYa">
-                                <rect key="frame" x="75" y="64" width="240" height="561"/>
+                                <rect key="frame" x="16" y="64" width="358" height="561"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.81443578000000005" green="0.85252493620000003" blue="0.65521526340000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.64989310499999997" green="0.6835919023" blue="0.52574020619999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7Bz-jw-HxA">
+                                <rect key="frame" x="352" y="22" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sk9-Cm-yqY"/>
                         <color key="backgroundColor" red="0.81476992370000001" green="0.85289758439999996" blue="0.65461438890000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -169,6 +165,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="idf-if-XX3"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="Tii-FZ-YYa" id="dMv-cr-JiD"/>
+                        <outlet property="loadingSpinner" destination="7Bz-jw-HxA" id="rbJ-6s-2mP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imA-ET-qJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -259,7 +256,7 @@
             </objects>
             <point key="canvasLocation" x="4729" y="1353"/>
         </scene>
-        <!--Home-->
+        <!--Featured-->
         <scene sceneID="vy8-t6-hna">
             <objects>
                 <viewController id="NGZ-kS-pFt" customClass="HomeViewController" customModule="Final_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -377,7 +374,7 @@
                             <constraint firstItem="rH0-m7-Ulz" firstAttribute="top" secondItem="A3S-cs-B2v" secondAttribute="bottom" constant="8" symbolic="YES" id="tip-cz-lcj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="sXw-Nb-hw4"/>
+                    <tabBarItem key="tabBarItem" title="Featured" image="homekit" catalog="system" id="sXw-Nb-hw4"/>
                     <connections>
                         <outlet property="ingredientsTableView" destination="p98-Nl-G8a" id="17p-ND-5yb"/>
                         <outlet property="ingredientsTableViewHeightConstraints" destination="jbq-xR-tef" id="AX9-cz-1HK"/>
@@ -592,7 +589,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screenshot 2022-12-05 at 0.09.01" width="1218" height="551"/>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

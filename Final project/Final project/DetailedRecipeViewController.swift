@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
+    let apiKey = "d9b36e447e1a488a8c53a19d4168b2b6"
     var recipeID: Int!
     var recipeTitle: String!
     var recipeImage: UIImage?
@@ -103,7 +104,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=\(apiKey)")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
         ingredientsAPIResultsData = try! JSONDecoder().decode(ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
@@ -111,11 +112,17 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForInstructionsTableView() {
         let instructionsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
-        let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
-        instructionsAPIResultsData = try! JSONDecoder().decode([instructionsAPIResults].self, from: binaryAPIResultsData)
-        print(instructionsAPIResultsData!)
-        instructionsData = instructionsAPIResultsData?[0].steps ?? [Step(number: 0, step: "No Instructions Provided", ingredients: nil, equipment: nil, length: Length(number: nil, unit: nil))]
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=\(apiKey)")
+        let binaryAPIResultsData = try? Data(contentsOf: instructionsURL!)
+        if binaryAPIResultsData != nil{
+            instructionsAPIResultsData = try! JSONDecoder().decode([instructionsAPIResults].self, from: binaryAPIResultsData!)
+            print(instructionsAPIResultsData!)
+            instructionsData = (instructionsAPIResultsData?[0].steps)!
+            //instructionsData = instructionsAPIResultsData?[0].steps ?? [Step(number: 0, step: "No Instructions Provided", ingredients: nil, equipment: nil, length: Length(number: nil, unit: nil))]
+        }else{
+            instructionsData = [Step(number: 0, step: "No Instructions Provided", ingredients: nil, equipment: nil, length: Length(number: nil, unit: nil))]
+        }
+        
     }
 
     
@@ -181,8 +188,9 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
             "User":String(Auth.auth().currentUser!.uid)
         ]
         ref.child(String(Int.random(in: 0..<1000))).setValue(object)
-
     }
+    
+    
     
 
     /*

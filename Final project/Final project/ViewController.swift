@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate{
     
-    let apiKey = "1b4fa62e8edf48c3b6f2fcb456aded47"
+    let apiKey = "d9b36e447e1a488a8c53a19d4168b2b6"
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var recipesCollectionView: UICollectionView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         loadingSpinner.isHidden = true
         searchBar.delegate = self
         setupRecipesCollectionView()
+
     }
     
     
