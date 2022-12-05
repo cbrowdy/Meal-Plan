@@ -47,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func fetchDataForRecipesCollectionView(keyword: String) {
         let recipeURL = URL(string:
-                                "https://api.spoonacular.com/recipes/complexSearch?apiKey=804dbeff69ea4e25a1051ae9714d9e63&query=\(keyword.replacingOccurrences(of: " ", with: "+") )")
+                                "https://api.spoonacular.com/recipes/complexSearch?apiKey=1fb7da19f9b4445aa293b61cfa6d479f&query=\(keyword.replacingOccurrences(of: " ", with: "+") )")
         let binaryAPIResultsData = try! Data(contentsOf: recipeURL!)
         currentAPIResultsData = try! JSONDecoder().decode(APIResults.self, from: binaryAPIResultsData)
         currentRecipesData = currentAPIResultsData!.results
