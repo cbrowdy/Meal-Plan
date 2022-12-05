@@ -1,87 +1,25 @@
 //
-//  DetailedRecipeViewController.swift
+//  HomeViewController.swift
 //  Final project
 //
-//  Created by Omer Moav on 14/11/2022.
+//  Created by Omer Moav on 04/12/2022.
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 
-class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource {
     
+//    var recipeID: Int! = 133212
+    
+    var recipeData:Dictionary<String,Any>!
     var recipeID: Int!
     var recipeTitle: String!
     var recipeImage: UIImage?
     
-    var ingredientsAPIResultsData: ingredientsAPIResults?
-    var ingredientsData: [Ingredient] = []
-    var instructionsAPIResultsData: [instructionsAPIResults]?
-    var instructionsData: [Step] = []
-    
-    struct ingredientsAPIResults:Decodable {
-        let ingredients: [Ingredient]
-    }
-    
-    struct Ingredient:Decodable {
-        let name: String?
-        let image: String?
-        let amount: Amount?
-    }
-    
-    struct Amount:Decodable {
-        let metric: Metric?
-        let us: US?
-    }
-    
-    struct Metric:Decodable {
-        let value: Double?
-        let unit: String?
-    }
-    
-    struct US:Decodable {
-        let value: Double?
-        let unit: String?
-    }
-    
-    struct instructionsAPIResults:Decodable {
-        let name: String?
-        let steps:[Step]?
-    }
-    
-    struct Step:Decodable {
-        let number: Int?
-        let step: String?
-        let ingredients:[IngredientOfInstruction]?
-        let equipment: [Equipment]?
-        let length: Length?
-    }
-    
-    struct IngredientOfInstruction:Decodable {
-        let id: Int?
-        let name:String?
-        let localizedName: String?
-        let image: String?
-    }
-    
-    struct Equipment:Decodable {
-        let id: Int?
-        let name:String?
-        let localizedName: String?
-        let image: String?
-        let temperature: Temperature?
-    }
-    
-    struct Temperature:Decodable {
-        let number: Double?
-        let unit: String?
-    }
-    
-    struct Length: Decodable {
-        let number: Int?
-        let unit: String?
-    }
+    var ingredientsAPIResultsData: DetailedRecipeViewController.ingredientsAPIResults?
+    var ingredientsData: [DetailedRecipeViewController.Ingredient] = []
+    var instructionsAPIResultsData: [DetailedRecipeViewController.instructionsAPIResults]?
+    var instructionsData: [DetailedRecipeViewController.Step] = []
     
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeUIImage: UIImageView!
@@ -89,11 +27,14 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var instructionsTableView: UITableView!
     @IBOutlet weak var ingredientsTableViewHeightConstraints: NSLayoutConstraint!
     @IBOutlet weak var instructionsTableViewHeightConstraints: NSLayoutConstraint!
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        GenerateRandomRecipe()
         recipeNameLabel.text = recipeTitle
         recipeUIImage.image = recipeImage
         fetchDataForIngredientsTableView()
@@ -101,11 +42,29 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         setupTableViews()
     }
     
+    func GenerateRandomRecipe(){
+        let randomRecipeURL = URL(string: "https://api.spoonacular.com/recipes/random?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb&number=1&includeNutrition=false")
+        let binaryRandomRecipeResults = try! Data(contentsOf: randomRecipeURL!)
+        if let randomRecipeResults = try! JSONSerialization.jsonObject(with: binaryRandomRecipeResults, options: .fragmentsAllowed) as? [String:Any]{
+            recipeData = (((randomRecipeResults["recipes"] as! NSArray)[0]) as! Dictionary<String,Any>)
+            recipeID = recipeData["id"]! as? Int ?? 0
+            recipeTitle = recipeData["title"] as? String ?? ""
+            if let stringRecipeImageURL = recipeData["image"] as? String {
+                let recipeImageURL = URL(string: stringRecipeImageURL)
+                let data = try? Data(contentsOf: recipeImageURL!)
+                recipeImage = UIImage(data: data!)
+            }
+            else {
+                recipeImage = UIImage(named: "No-Image-Placeholder.svg")
+            }
+        }
+    }
+    
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
                                 "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
-        ingredientsAPIResultsData = try! JSONDecoder().decode(ingredientsAPIResults.self, from: binaryAPIResultsData)
+        ingredientsAPIResultsData = try! JSONDecoder().decode(DetailedRecipeViewController.ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
     }
     
@@ -113,17 +72,14 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         let instructionsURL = URL(string:
                                 "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
         let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
-        instructionsAPIResultsData = try! JSONDecoder().decode([instructionsAPIResults].self, from: binaryAPIResultsData)
+        instructionsAPIResultsData = try! JSONDecoder().decode([DetailedRecipeViewController.instructionsAPIResults].self, from: binaryAPIResultsData)
         print(instructionsAPIResultsData!)
-        instructionsData = instructionsAPIResultsData?[0].steps ?? [Step(number: 0, step: "No Instructions Provided", ingredients: nil, equipment: nil, length: Length(number: nil, unit: nil))]
+        instructionsData = instructionsAPIResultsData?[0].steps ?? [DetailedRecipeViewController.Step(number: 0, step: "No Instructions Provided", ingredients: nil, equipment: nil, length: DetailedRecipeViewController.Length(number: nil, unit: nil))]
     }
 
-    
     func setupTableViews(){
         ingredientsTableView.dataSource = self
         ingredientsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ingredientCell")
-//        ingredientsTableView.estimatedRowHeight = 85.0
-//        ingredientsTableView.rowHeight = UITableView.automaticDimension
         
         instructionsTableView.dataSource = self
         instructionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "instructionCell")
@@ -145,10 +101,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         if tableView == self.ingredientsTableView {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "ingredientCell")
             let currentIngredient = getIngredientByIndex(index: indexPath.row)
-//            cell.textLabel!.text = ingredientsData[indexPath.row].name!
-              cell.textLabel!.text = currentIngredient
-//            cell.textLabel!.lineBreakMode = .byWordWrapping
-//            cell.textLabel!.numberOfLines = 0
+            cell.textLabel!.text = currentIngredient
             return cell
         }
         else if tableView == self.instructionsTableView {
@@ -172,18 +125,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         self.ingredientsTableViewHeightConstraints?.constant = self.ingredientsTableView.contentSize.height
         self.instructionsTableViewHeightConstraints?.constant = self.instructionsTableView.contentSize.height
     }
-    
-    private let ref = Database.database().reference(fromURL: "https://mealplan-327cb-default-rtdb.firebase.com/")
-    @IBAction func favoriteRecipe(_ sender: UIButton) {
-        
-        let object: [String: Any] = [
-            "ID":recipeID!,
-            "User":String(Auth.auth().currentUser!.uid)
-        ]
-        ref.child(String(Int.random(in: 0..<1000))).setValue(object)
 
-    }
-    
 
     /*
     // MARK: - Navigation

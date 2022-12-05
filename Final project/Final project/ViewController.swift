@@ -89,16 +89,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        let recipeImageSubView = UIImageView(frame: cell.bounds)
-//        recipeImageSubView.image = theImageCache[indexPath.item]
-//        let recipeTitleSubView = UILabel(frame: CGRect(x: 0, y: 0.75*cell.bounds.height, width: cell.bounds.width, height: 0.25*cell.bounds.height))
-//        recipeTitleSubView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        recipeTitleSubView.text = currentRecipesData[indexPath.item].title
-//        recipeTitleSubView.textColor = UIColor.white
-//        recipeTitleSubView.textAlignment = .center
-//        cell.addSubview(recipeImageSubView)
-//        cell.addSubview(recipeTitleSubView)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         for subview in cell.subviews{
             subview.removeFromSuperview()
