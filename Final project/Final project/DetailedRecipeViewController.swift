@@ -103,7 +103,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=1fb7da19f9b4445aa293b61cfa6d479f")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
         ingredientsAPIResultsData = try! JSONDecoder().decode(ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
@@ -111,7 +111,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForInstructionsTableView() {
         let instructionsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=1fb7da19f9b4445aa293b61cfa6d479f")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=1b4fa62e8edf48c3b6f2fcb456aded47")
         let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
         instructionsAPIResultsData = try! JSONDecoder().decode([instructionsAPIResults].self, from: binaryAPIResultsData)
         print(instructionsAPIResultsData!)
