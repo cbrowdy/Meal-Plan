@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
 
         // Do any additional setup after loading the view.
         GenerateRandomRecipe()
-        recipeNameLabel.text = recipeTitle
+        recipeNameLabel.text = " " + recipeTitle + "    "
         recipeUIImage.image = recipeImage
         fetchDataForIngredientsTableView()
         fetchDataForInstructionsTableView()
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func GenerateRandomRecipe(){
-        let randomRecipeURL = URL(string: "https://api.spoonacular.com/recipes/random?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb&number=1&includeNutrition=false")
+        let randomRecipeURL = URL(string: "https://api.spoonacular.com/recipes/random?apiKey=1fb7da19f9b4445aa293b61cfa6d479f&number=1&includeNutrition=false")
         let binaryRandomRecipeResults = try! Data(contentsOf: randomRecipeURL!)
         if let randomRecipeResults = try! JSONSerialization.jsonObject(with: binaryRandomRecipeResults, options: .fragmentsAllowed) as? [String:Any]{
             recipeData = (((randomRecipeResults["recipes"] as! NSArray)[0]) as! Dictionary<String,Any>)
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForIngredientsTableView() {
         let ingredientsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/ingredientWidget.json?apiKey=1fb7da19f9b4445aa293b61cfa6d479f")
         let binaryAPIResultsData = try! Data(contentsOf: ingredientsURL!)
         ingredientsAPIResultsData = try! JSONDecoder().decode(DetailedRecipeViewController.ingredientsAPIResults.self, from: binaryAPIResultsData)
         ingredientsData = ingredientsAPIResultsData!.ingredients
@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     func fetchDataForInstructionsTableView() {
         let instructionsURL = URL(string:
-                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=7ca4f47e9c2a400fafd3cb3fb95298fb")
+                                "https://api.spoonacular.com/recipes/\(recipeID!)/analyzedInstructions?apiKey=1fb7da19f9b4445aa293b61cfa6d479f")
         let binaryAPIResultsData = try! Data(contentsOf: instructionsURL!)
         instructionsAPIResultsData = try! JSONDecoder().decode([DetailedRecipeViewController.instructionsAPIResults].self, from: binaryAPIResultsData)
         print(instructionsAPIResultsData!)

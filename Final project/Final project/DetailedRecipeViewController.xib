@@ -75,7 +75,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="0.8156862855" green="0.85490196939999996" blue="0.6549019814" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="MnZ-jG-YVe" firstAttribute="leading" secondItem="nGR-Bh-plB" secondAttribute="leading" constant="8" id="2Th-gj-dlu"/>
                                 <constraint firstItem="IA8-Na-kyq" firstAttribute="width" secondItem="nGR-Bh-plB" secondAttribute="width" multiplier="0.955307" id="9ik-jc-IT1"/>
@@ -108,7 +108,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.8156862855" green="0.85490196939999996" blue="0.6549019814" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="neA-Sc-cqm" secondAttribute="trailing" constant="16" id="Cz6-ck-XPy"/>
                 <constraint firstItem="neA-Sc-cqm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wdy-hy-2rC"/>
