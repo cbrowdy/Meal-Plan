@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BrA-mx-cXu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BrA-mx-cXu">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -15,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Final_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-hj-hbU">
@@ -27,11 +26,11 @@
                                 </connections>
                             </searchBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-zE-z9d">
-                                <rect key="frame" x="191" y="80" width="20" height="20"/>
+                                <rect key="frame" x="354" y="85" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ghs-eM-p1G">
-                                <rect key="frame" x="15" y="123" width="359" height="550"/>
+                                <rect key="frame" x="15" y="149" width="359" height="550"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8156862855" green="0.85490196939999996" blue="0.6549019814" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cWV-72-VxQ">
@@ -51,15 +50,90 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV4-KY-ygK">
+                                <rect key="frame" x="20" y="78" width="35" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="cheap"/>
+                                <connections>
+                                    <action selector="cheap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eKI-jC-K5G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fj-MW-uT7">
+                                <rect key="frame" x="89" y="82" width="65" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Vegan"/>
+                                <connections>
+                                    <action selector="vegan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RcS-9z-mmp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjZ-jA-Kaq">
+                                <rect key="frame" x="175" y="81" width="94" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Vegetarian"/>
+                                <connections>
+                                    <action selector="vegetarian:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RpD-Vc-fAE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-vc-N18">
+                                <rect key="frame" x="6" y="108" width="74" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Healthy"/>
+                                <connections>
+                                    <action selector="healthy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0se-yC-ilQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-B2-qMi">
+                                <rect key="frame" x="93" y="105" width="74" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Gluten Free"/>
+                                <connections>
+                                    <action selector="glutenFree:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2sj-tN-Pgi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWp-ff-eI8">
+                                <rect key="frame" x="185" y="105" width="74" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Dairy Free"/>
+                                <connections>
+                                    <action selector="dairyFree:" destination="BYZ-38-t0r" eventType="touchUpInside" id="01z-yW-k3d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axe-vg-PWz">
+                                <rect key="frame" x="267" y="96" width="58" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                <connections>
+                                    <action selector="clearFilters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zj0-5L-KqC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.8156862855" green="0.85490196939999996" blue="0.6549019814" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="nhR-cO-NAY"/>
                     <connections>
+                        <outlet property="cheapOutlet" destination="GV4-KY-ygK" id="ESC-s0-5Kj"/>
+                        <outlet property="dairyFreeOutlet" destination="lWp-ff-eI8" id="ahI-e9-veO"/>
+                        <outlet property="glutenFreeOutlet" destination="Kxc-B2-qMi" id="Kqf-5w-dIc"/>
+                        <outlet property="healthyOutlet" destination="Gm8-vc-N18" id="9T1-nk-Ur7"/>
                         <outlet property="loadingSpinner" destination="Nvg-zE-z9d" id="fJ6-iF-IUo"/>
                         <outlet property="recipesCollectionView" destination="Ghs-eM-p1G" id="FGN-io-OJh"/>
                         <outlet property="searchBar" destination="d9j-hj-hbU" id="jhK-gd-GhG"/>
+                        <outlet property="veganOutlet" destination="3fj-MW-uT7" id="qnq-vi-tmF"/>
+                        <outlet property="vegetarianOutlet" destination="LjZ-jA-Kaq" id="sAw-Sm-UdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -154,7 +228,7 @@
             <objects>
                 <viewController id="NGZ-kS-pFt" customClass="HomeViewController" customModule="Final_project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fCZ-nI-G4x">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Recipe!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3S-cs-B2v">
@@ -165,11 +239,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rH0-m7-Ulz" userLabel="Detailed Recipe View">
-                                <rect key="frame" x="0.0" y="90" width="390" height="566"/>
+                                <rect key="frame" x="0.0" y="90" width="390" height="569"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn6-qg-J7m">
-                                        <rect key="frame" x="16" y="0.0" width="358" height="566"/>
+                                        <rect key="frame" x="16" y="0.0" width="358" height="569"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqQ-tN-6He" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="930"/>
@@ -464,7 +538,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="QJ5-c1-IcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="490-Hy-vBb">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -482,8 +556,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screenshot 2022-12-05 at 0.09.01" width="1218" height="551"/>
-        <image name="homekit" catalog="system" width="128" height="104"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="clear" catalog="system" width="128" height="114"/>
+        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
