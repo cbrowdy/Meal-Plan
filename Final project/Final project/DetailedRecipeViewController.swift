@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
@@ -170,8 +172,18 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
         self.ingredientsTableViewHeightConstraints?.constant = self.ingredientsTableView.contentSize.height
         self.instructionsTableViewHeightConstraints?.constant = self.instructionsTableView.contentSize.height
     }
+    
+    private let ref = Database.database().reference(fromURL: "https://mealplan-327cb-default-rtdb.firebase.com/")
+    @IBAction func favoriteRecipe(_ sender: UIButton) {
+        
+        let object: [String: Any] = [
+            "ID":recipeID!,
+            "User":String(Auth.auth().currentUser!.uid)
+        ]
+        ref.child(String(Int.random(in: 0..<1000))).setValue(object)
 
-
+    }
+    
 
     /*
     // MARK: - Navigation
